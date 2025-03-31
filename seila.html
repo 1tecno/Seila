@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carregar JSON Externo</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 20px;
+            background-color: #f4f4f4;
+        }
+        #conteudo {
+            font-size: 18px;
+            color: #333;
+            margin-top: 20px;
+            padding: 10px;
+            background: white;
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+    <h1 id="titulo">Carregando...</h1>
+    <p id="conteudo">Aguarde...</p>
+
+    <script>
+        fetch("Pedro_Site_2.json")
+        .then(response => response.json())
+        .then(data => {
+            document.getElementById("titulo").innerText = data.titulo;
+            document.getElementById("conteudo").innerText = data.mensagem;
+        })
+        .catch(error => {
+            document.getElementById("conteudo").innerText = "Erro ao carregar o JSON.";
+            console.error("Erro:", error);
+        });
+    </script>
+</body>
+</html>
